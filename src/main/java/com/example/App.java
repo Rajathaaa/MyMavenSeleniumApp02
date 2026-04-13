@@ -26,7 +26,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 // OPTIONAL but recommended
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class App 
 {
