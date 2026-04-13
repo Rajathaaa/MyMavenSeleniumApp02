@@ -25,18 +25,10 @@ pipeline {
         }
 
         stage('Run Application') {
-            steps {
-                sh '''
-                echo "Listing target folder..."
-                ls -lh target
-
-                JAR=$(ls target/*shaded.jar)
-                echo "Running JAR: $JAR"
-
-                java -jar $JAR
-                '''
-            }
-        }
+    steps {
+        sh 'java -jar target/app.jar'
+    }
+}
     }
 
     post {
