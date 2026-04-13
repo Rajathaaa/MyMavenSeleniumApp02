@@ -29,7 +29,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 // Start the JAR application
-                sh 'java -jar target/*shaded.jar'
+                sh 'java -jar $(ls target/*shaded.jar)'
             }
         }
 
