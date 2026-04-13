@@ -1,9 +1,10 @@
 pipeline {
-    agent any  // Use any available agent
+    agent any
 
     tools {
-        maven 'Maven'  // Ensure this matches the name configured in Jenkins
+        maven 'Maven'
     }
+
     stages {
         stage('Checkout') {
             steps {
@@ -13,27 +14,29 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'  // Run Maven build
+                sh 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'  // Run unit tests
+                sh 'mvn test'
             }
         }
 
-        
-        
-       
         stage('Run Application') {
             steps {
-                // Start the JAR application
-                sh 'java -jar $(ls target/*shaded.jar)'
+                sh '''
+                echo "Listing target folder..."
+                ls -lh target
+
+                JAR=$(ls target/*shaded.jar)
+                echo "Running JAR: $JAR"
+
+                java -jar $JAR
+                '''
             }
         }
-
-        
     }
 
     post {
